@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers</title>
+    <title>Bookers2</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,7 +13,19 @@
 
   <body>
     <header>
+      <%= render 'layouts/header' %>
+      <main>
+        <%= yield %>
+      </main>
+      <%= render 'layouts/footer' %>
+
       <% if user_signed_in? %>
+        <li>
+          <%= link_to '投稿フォーム', new_book_path %>
+        </li>
+        <li>
+        <%= link_to 'マイページ', user_path(current_user.id) %>
+      </li>
         <li>
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </li>
