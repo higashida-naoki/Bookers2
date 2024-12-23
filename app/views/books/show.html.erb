@@ -1,11 +1,19 @@
-<div>
-  <%= image_tag @book.get_image %>
-  <p>ショップ名：<%= @book.shop_name %></p>
-  <p>説明：<%= @book.caption %></p>
-  <p>投稿ユーザー画像：<%= image_tag 'sample-author1.jpg' %></p>
-  <p>ユーザーネーム：<%= @book.user.name %></p>
-  <p>投稿日：<%= @book.created_at.strftime('%Y/%m/%d') %></p>
-  <% if @book.user == current_user %>
-    <%= link_to "削除", book_path(@book), method: :delete %>
-  <% end %>
-</div>
+<table class='table table-hover table-inverse'>
+  <tbody>
+      <tr>
+        
+          <td><%= link_to book_path(@book.id) do %>
+            <%= image_tag @book.get_image %>
+            <p>ユーザーネーム：<%= @book.user.name %></p>
+            <% end %>
+          </td>
+          <td><%= @book.title %></td>
+          <td><%= @book.body %></td>
+          <% if @book.user == current_user %>
+          <td><%= link_to "削除", book_path(@book), method: :delete %></td>
+        <% end %>
+      </tr>
+  
+  
+  </tbody>
+</table>

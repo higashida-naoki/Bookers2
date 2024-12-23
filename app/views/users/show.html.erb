@@ -4,7 +4,7 @@
 	    <h2>User info</h2>
 	    <table class='table'>
 	      <tr>
-	        <%= image_tag 'no_image.jpg' %>
+	        <%= image_tag @user.get_profile_image(100, 100) %>
 	      </tr>
 	      <tr>
 	        <th>name</th>
@@ -16,10 +16,16 @@
 	      </tr>
 	    </table>　
 	    <div class='row'>
-	      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-secondary mt-3' %>
+	      <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-secondary mt-12' %>
 	    </div>
 	    <h2 class="mt-3">New book</h2>
-	    <!-- form_withを用いて新規投稿フォームを作成しましょう。 -->
+	    <%= form_with model: Book.new do |f| %>
+				<h4>Title</h4>
+				<%= f.text_field :title %>
+				<h4>Opinion</h4>
+				<%= f.text_field :body %>
+				 <%= f.submit 'Create Book' %>
+			<% end %>
 	  </div>
 	  <div class='col-md-8 offset-md-1'>
 	    <h2>Books</h2>
