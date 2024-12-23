@@ -8,6 +8,10 @@ class User < ApplicationRecord
 
   has_one_attached :profile_image
 
+  def introduction
+    # 自己紹介文の処理を記述
+  end
+
   
   def get_profile_image
     unless profile_image.attached?
