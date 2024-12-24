@@ -1,0 +1,31 @@
+<div class='container mt-5'>
+  <div class='row'>
+    <div class='mx-auto'>
+
+      <% if @book.errors.any? %>
+        <%= @book.errors.count %>errors prohibited this book from beimg saned:
+        <ul>
+          <% @book.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <% end %>
+
+      <h1>Editing Book</h1>
+      <%= form_with model: @book, url: book_path(@book.id), method: :patch do |f| %>
+        <h4>Title</h4>
+          <%= f.text_field :title %>
+        <h4>Opinion</h4>
+          <%= f.text_area :body %>
+        <br>
+        <%= f.submit 'Update Book', class: "btn btn-success" %>
+        <br>
+        <%= link_to "Show", book_path(@book) %>
+          " | "
+        <%= link_to "Back", books_path, class: "back" %> 
+      <% end %>
+    </div>
+  </div>
+</div>
+  
+    
